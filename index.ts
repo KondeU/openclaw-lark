@@ -17,6 +17,7 @@ import { registerFeishuMcpDocTools } from './src/tools/mcp/doc/index';
 import { registerFeishuOAuthTool } from './src/tools/oauth';
 import { registerFeishuOAuthBatchAuthTool } from './src/tools/oauth-batch-auth';
 import { registerAskUserQuestionTool } from './src/tools/ask-user-question';
+import { registerListBotsTool } from './src/tools/list-bots';
 import {
   analyzeTrace,
   formatDiagReportCli,
@@ -126,6 +127,9 @@ const plugin = {
 
     // Register AskUserQuestion tool (interactive card-based user prompting)
     registerAskUserQuestionTool(api);
+
+    // Register List Bots tool (discover bot identities for cross-bot @mentions)
+    registerListBotsTool(api);
 
     api.on('before_tool_call', (event, ctx) => {
       recordToolUseStart({
